@@ -229,6 +229,10 @@ static void* android_app_entry(void* param) {
     return NULL;
 }
 
+void android_app_configure(struct android_app* android_app) __attribute__((weak));
+
+void android_app_configure(struct android_app* android_app) { }
+
 // --------------------------------------------------------------------
 // Native activity interaction (called from main thread)
 // --------------------------------------------------------------------
@@ -254,6 +258,8 @@ static struct android_app* android_app_create(ANativeActivity* activity,
     }
     android_app->msgread = msgpipe[0];
     android_app->msgwrite = msgpipe[1];
+    
+    android_app_configure(android_app);
 
     pthread_attr_t attr;
     pthread_attr_init(&attr);
