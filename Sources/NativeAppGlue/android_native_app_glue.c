@@ -231,7 +231,8 @@ static void* android_app_entry(void* param) {
 
 void android_app_configure(struct android_app* android_app) __attribute__((weak));
 
-void android_app_configure(struct android_app* android_app) { }
+void android_app_configure(struct android_app* android_app) {
+}
 
 // --------------------------------------------------------------------
 // Native activity interaction (called from main thread)
